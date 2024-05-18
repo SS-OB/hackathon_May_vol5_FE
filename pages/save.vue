@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>保存画面</h1>
+    <button @click="goToAuthPage">認証する</button>
     <input v-model="query" @input="searchMusic" placeholder="曲を検索" />
     <ul>
       <li v-for="track in tracks" :key="track.id" @click="selectTrack(track)">
@@ -58,6 +59,9 @@ export default {
       await this.$axios.$post("/item", formData);
 
       this.$router.push("/");
+    },
+    goToAuthPage() {
+      this.$router.push("/auth");
     },
   },
 };
